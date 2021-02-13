@@ -153,7 +153,7 @@ public final class SessionImpl: Session, TaskSession, DestroyableSession, ApiErr
     }
    
     @discardableResult
-    func logIn(revoke: Bool) throws -> [String: String] {
+    public func logIn(revoke: Bool) throws -> [String: String] {
         try throwIfDestroyed()
         try throwIfAuthorized()
         

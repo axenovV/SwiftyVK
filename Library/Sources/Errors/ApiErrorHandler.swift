@@ -4,7 +4,7 @@ protocol ApiErrorHandler {
     func handle(error: ApiError, token: InvalidatableToken?) throws -> ApiErrorHandlerResult
 }
 
-final class ApiErrorHandlerImpl: ApiErrorHandler {
+public final class ApiErrorHandlerImpl: ApiErrorHandler {
     
     private let executor: ApiErrorExecutor
     
