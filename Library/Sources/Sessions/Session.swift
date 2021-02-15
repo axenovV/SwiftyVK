@@ -26,6 +26,11 @@ public protocol Session: class {
     func logIn(rawToken: String, expires: TimeInterval) throws
     /// Log out user, remove all data and destroy current session
     func logOut()
+    
+    func logIn(revoke: Bool) throws -> [String: String]
+    
+    func invalidateToken()
+    
     /// Send request in this session
     /// - parameter method: VK API method
     @discardableResult
@@ -203,6 +208,10 @@ public final class SessionImpl: Session, TaskSession, DestroyableSession, ApiErr
     
     func dismissCaptcha() {
         captchaPresenter.dismiss()
+    }
+    
+    public func invalidateToken() {
+        token?.invalidate()
     }
     
     @discardableResult
